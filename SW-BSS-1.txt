@@ -1,0 +1,347 @@
+hostname SW-BSS-1
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$WK/5$e39ou0dyEzeiX82mMayaY.
+!
+username admin secret 5 $1$mhXA$XtcS14YITU9YPgYaSFvuP/
+!
+!
+no aaa new-model
+system mtu routing 1500
+ip domain-name bal.com
+!
+!         
+ip dhcp snooping vlan 1-9
+ip dhcp snooping
+!
+!
+crypto pki trustpoint TP-self-signed-3863158400
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3863158400
+ revocation-check none
+ rsakeypair TP-self-signed-3863158400
+!
+!
+crypto pki certificate chain TP-self-signed-3863158400
+ certificate self-signed 01
+  30820248 308201B1 A0030201 02020101 300D0609 2A864886 F70D0101 04050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 33383633 31353834 3030301E 170D3933 30333031 30303031 
+  33355A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D33 38363331 
+  35383430 3030819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100C143 5A9ADBA3 0948BCC9 A22E5545 3DC88594 3E81E42E 0CA36B1D 70FB6CF6 
+  A88A3C4A 0BC3BBB2 59C652D3 DCDF1B7A D1057B32 33C21579 90B14C5F 6753AE7A 
+  0D959226 9A5F60E5 A93605A7 54A3B68C F4BC74EC 22A4A91E D28FB4A9 CEB9C850 
+  E1D0BD33 277F8C02 BF28CA85 7DDE3645 FCF518A5 5B27A376 D6DC4762 70D36AC5 
+  B4930203 010001A3 70306E30 0F060355 1D130101 FF040530 030101FF 301B0603 
+  551D1104 14301282 1053572D 4253532D 312E6261 6C2E636F 6D301F06 03551D23 
+  04183016 80146CDE 5DC410BE 609141D6 A689B987 E6B02E1F 38EF301D 0603551D 
+  0E041604 146CDE5D C410BE60 9141D6A6 89B987E6 B02E1F38 EF300D06 092A8648 
+  86F70D01 01040500 03818100 7F25A953 BD98B8C9 2E50E833 CD463033 028BAE94 
+  217A95AF 9A341287 50CC012D CB92EB0C 66F2584E CA844535 0B2DD646 AE832B73 
+  C93ACE05 CE941CC8 7192F056 0F87168F 0FC9EFD9 08625C56 4AE1A0AB 52793FE7 
+  AC8F0E62 D44B7DD5 8F75B724 AAAC8F20 FB7E98B3 4FF65CD2 15272B88 7F478969 
+  C433DCCC F87128A4 C5EE1E34
+  quit
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+!
+!
+interface Port-channel1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet0/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet0/2
+ description ESX 2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ ip dhcp snooping trust
+!
+interface FastEthernet0/3
+ switchport access vlan 4
+ switchport mode access
+!
+interface FastEthernet0/4
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/5
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/6
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/7
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/8
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/9
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/10
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/11
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/12
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/13
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/14
+ no switchport
+ no ip address
+ shutdown 
+!
+interface FastEthernet0/15
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/16
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/17
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/18
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/19
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/20
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/21
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/22
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/23
+ no switchport
+ no ip address
+ shutdown
+!         
+interface FastEthernet0/24
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/25
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/26
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/27
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/28
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/29
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/30
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/31
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/32
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/33
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/34
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/35
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/36
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/37
+ no switchport
+ no ip address
+ shutdown 
+!
+interface FastEthernet0/38
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/39
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/40
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/41
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/42
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/43
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/44
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/45
+ no switchport
+ no ip address
+ shutdown
+!
+interface FastEthernet0/46
+ no switchport
+ no ip address
+ shutdown
+!         
+interface FastEthernet0/47
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 1 mode active
+ ip dhcp snooping trust
+!
+interface FastEthernet0/48
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 1 mode active
+ ip dhcp snooping trust
+!
+interface GigabitEthernet0/1
+ no switchport
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0/2
+ no switchport
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0/3
+ no switchport
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0/4
+ no switchport
+ no ip address
+ shutdown
+!
+interface Vlan1
+ ip address dhcp
+!
+interface Vlan4
+ ip address 10.0.255.250 255.255.0.0
+!
+ip default-gateway 10.0.255.254
+ip classless
+ip http server
+ip http secure-server
+!
+logging trap debugging
+logging 10.1.0.20
+snmp-server community BAL RO
+!
+!
+line con 0
+line vty 0 4
+ login local
+ transport input ssh
+line vty 5 15
+ login
+!
+end
